@@ -2,6 +2,16 @@ const fs = require("fs");
 const getNotes = function () {
   console.log("Notes...");
 };
+const addNote = function (title, body) {
+  const data = loadNotes();
+  //recall if no data exists yet, data =[]
+  //if data exists, it will be Array<Object>
+  data.push({
+    title: title,
+    body: body,
+  });
+  updateNotes(data);
+};
 const loadNotes = function () {
   try {
     //data is a buffer as the return value is in binary, not a string
@@ -19,4 +29,5 @@ const updateNotes = function(updatedNotes) {
 }
 module.exports = {
   getNotes: getNotes,
+  addNote: addNote,
 };
