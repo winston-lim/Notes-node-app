@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require('chalk');
 const getNotes = function () {
   console.log("Notes...");
 };
@@ -10,7 +11,7 @@ const addNote = function (title, body) {
   //to prevent duplicate titles, if title already exists, add it to a duplicateNotes array
   const duplicateNotes = data.filter((note)=>note.title === title);
   if (duplicateNotes.length >0) {
-    console.log('title taken')
+    console.log(chalk.red.inverse('title taken'));
     return;
   }
   data.push({
@@ -18,8 +19,9 @@ const addNote = function (title, body) {
     body: body,
   });
   updateNotes(data);
-  console.log('new note added')
+  console.log(chalk.green.inverse(`${title} added!`));
 };
+
 const loadNotes = function () {
   try {
     //data is a buffer as the return value is in binary, not a string
