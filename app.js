@@ -41,7 +41,7 @@ yargs.command({
       },
     },
     handler: (argv) =>{
-      console.log('Removed note:' + argv.title);
+      notesUtil.removeNote(argv.title);
     }}).command({
       command: 'List',
       describe: 'List all existing notes',

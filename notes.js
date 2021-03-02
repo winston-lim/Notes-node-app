@@ -21,6 +21,17 @@ const addNote = function (title, body) {
   updateNotes(data);
   console.log(chalk.green.inverse(`${title} added!`));
 };
+const removeNote = function(title) {
+  const data = loadNotes();
+  const notesToKeep = data.filter((note)=>note.title!==title);
+  if (notesToKeep.length === data.length ) {
+    console.log(chalk.red.inverse('No such title'));
+    return;
+  }
+  updateNotes(notesToKeep);
+  console.log(chalk.green.inverse(`${title} was removed!`));
+}
+
 
 const loadNotes = function () {
   try {
@@ -41,4 +52,5 @@ const updateNotes = function(updatedNotes) {
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
+  removeNote: removeNote,
 };
