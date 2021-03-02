@@ -13,6 +13,10 @@ const loadNotes = function () {
     return [];
   }
 };
+const updateNotes = function(updatedNotes) {
+  const dataString = JSON.stringify(updatedNotes);
+  fs.writeFileSync('notes.json', dataString);
+}
 module.exports = {
   getNotes: getNotes,
 };
