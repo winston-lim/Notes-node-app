@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
-const getNotes = require('./notes.js');
+const fs = require('fs');
+const notesUtil = require('./notes.js');
 
 //creating all commands
 yargs.command({
@@ -28,8 +29,7 @@ yargs.command({
   },
   //options will be in argv object, which can be accepted by handler
 	handler: (argv) =>{
-    console.log('Note title:' + argv.title);
-    console.log('Body: ' + argv.body);
+    notesUtil.addNote(argv.title, argv.body);
   }}).command({
     command: 'remove',
     describe: 'remove an existing note',
