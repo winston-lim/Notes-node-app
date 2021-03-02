@@ -16,5 +16,8 @@
     "url": "https://github.com/winston-lim/node-notes-app/issues"
   },
   "homepage": "https://github.com/winston-lim/node-notes-app#readme",
-  "type": "module"
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.5.2"
+  }
 }
