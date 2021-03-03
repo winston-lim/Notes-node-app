@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const getNotes = function () {
   console.log("Notes...");
 };
-const addNote = function (title, body) {
+const addNote = (title, body) => {
   const data = loadNotes();
   //recall if no data exists yet, data =[]
   //if data exists, it will be Array<Object>
@@ -21,7 +21,7 @@ const addNote = function (title, body) {
   updateNotes(data);
   console.log(chalk.green.inverse(`${title} added!`));
 };
-const removeNote = function(title) {
+const removeNote = (title) => {
   const data = loadNotes();
   const notesToKeep = data.filter((note)=>note.title!==title);
   if (notesToKeep.length === data.length ) {
@@ -33,7 +33,7 @@ const removeNote = function(title) {
 }
 
 
-const loadNotes = function () {
+const loadNotes = () => {
   try {
     //data is a buffer as the return value is in binary, not a string
     const dataBuffer = fs.readFileSync("notes.json");
@@ -45,7 +45,7 @@ const loadNotes = function () {
     return [];
   }
 };
-const updateNotes = function(updatedNotes) {
+const updateNotes = (updatedNotes) => {
   const dataString = JSON.stringify(updatedNotes);
   fs.writeFileSync('notes.json', dataString);
 }

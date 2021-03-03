@@ -28,9 +28,8 @@ yargs.command({
     },
   },
   //options will be in argv object, which can be accepted by handler
-	handler: (argv) =>{
-    notesUtil.addNote(argv.title, argv.body);
-  }}).command({
+	handler: (argv) => notesUtil.addNote(argv.title, argv.body),
+  }).command({
     command: 'remove',
     describe: 'remove an existing note',
     builder: {
@@ -40,13 +39,12 @@ yargs.command({
         type: 'string',
       },
     },
-    handler: (argv) =>{
-      notesUtil.removeNote(argv.title);
-    }}).command({
+    handler: (argv) => notesUtil.removeNote(argv.title),
+    }).command({
       command: 'List',
       describe: 'List all existing notes',
-      handler: () =>{
-      }}).command({
+      handler: () =>{},
+      }).command({
         command: 'read',
         describe: 'read a exisiting note',
         builder: {
@@ -56,5 +54,5 @@ yargs.command({
             type: 'string',
           },
         },
-        handler: () =>{
-        }}).argv
+        handler: () =>{},
+        }).argv
