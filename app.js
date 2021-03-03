@@ -41,9 +41,9 @@ yargs.command({
     },
     handler: (argv) => notesUtil.removeNote(argv.title),
     }).command({
-      command: 'List',
+      command: 'list',
       describe: 'List all existing notes',
-      handler: () =>{},
+      handler: () =>notesUtil.listNotes(),
       }).command({
         command: 'read',
         describe: 'read a exisiting note',
@@ -54,5 +54,5 @@ yargs.command({
             type: 'string',
           },
         },
-        handler: () =>{},
+        handler: (argv) =>notesUtil.readNote(argv.title),
         }).argv
